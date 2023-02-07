@@ -1,0 +1,27 @@
+.signing-transparent {
+    padding: 35px;
+    color: rgb(160, 45, 6);
+    border-radius: 25px;
+    background: rgba(139, 2, 2, 0.1);
+}
+.signing-input{
+    background: transparent;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    color: rgb(34, 31, 31);
+}
+.signing-input::placeholder{
+    color: rgb(202, 103, 10);
+    font-weight: bold;
+}
+.submit-button{
+    border: 2px solid rgb(206, 72, 27);
+    font-weight: bold;
+    color: rgb(206, 72, 27);
+
+}
+.submit-button:hover{
+    border: 3px solid rgb(206, 72, 27);
+}
