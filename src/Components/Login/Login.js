@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading';
@@ -45,10 +45,10 @@ const Login = () => {
                 <div className='flex justify-center'>
                     <form onSubmit={handleSignIn} className='w-4/5 mt-6' action="">
                         {/* ------------Email Field------------- */}
-                        <input type="email" name="email" placeholder="Enter Email" className="w-full max-w-xs signing-input" required />
+                        <input type="email" name="email" placeholder="User" className="w-full max-w-xs signing-input" required />
 
                         {/* ------------Password Field------------- */}
-                        <input type="password" name="password" placeholder="Enter Password" className="w-full max-w-xs mt-8 mb-2 signing-input" required />
+                        <input type="password" name="password" placeholder="Password" className="w-full max-w-xs mt-8 mb-2 signing-input" required />
 
                         {signInError}
 
@@ -57,7 +57,14 @@ const Login = () => {
 
                     </form>
                 </div>
+                <div className='flex justify-center mt-4'>
+                    <div>
+                        <p>user: shadhin@talukder.com</p>
+                        <p>password: 123456</p>
+                    </div>
+                </div>
             </div>
+
 
         </div>
     );

@@ -5,6 +5,10 @@ import Home from './Components/Home/Home';
 import ManageStudent from './Components/Home/ManageStudent';
 import Login from './Components/Login/Login';
 import RequireAuth from './Components/Login/RequireAuth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import View from './Components/Home/View';
+import Edit from './Components/Home/Edit';
 
 function App() {
   return (
@@ -15,8 +19,11 @@ function App() {
           <Route path='/manage' element={<ManageStudent></ManageStudent>}></Route>
         </Route>
 
+        <Route path='/view/:pincode' element={<RequireAuth><View></View></RequireAuth>}></Route>
+        <Route path='/edit/:pincode' element={<RequireAuth><Edit></Edit></RequireAuth>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
       </Routes>
+      <ToastContainer />
 
     </div>
   );

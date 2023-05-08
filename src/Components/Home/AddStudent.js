@@ -1,19 +1,53 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import useDate from '../hooks/useDate';
 import './style.css';
+import DashboardButton from './DashboardButton';
+
 
 const AddStudent = () => {
     const [date, time] = useDate();
+    
+
+    const handleAddStudent = e => {
+        e.preventDefault();
+        const first_name = e.target.first.value;
+        const middle_name = e.target.middle.value;
+        const last_name = e.target.last.value;
+        const full_name = first_name + ' ' + middle_name + ' ' + last_name;
+        const class_number = e.target.class_number.value;
+        const division = e.target.division.value;
+        const roll = e.target.roll.value;
+        const address1 = e.target.address1.value;
+        const address2 = e.target.address2.value;
+        const landmark = e.target.landmark.value;
+        const city = e.target.city.value;
+        const pin_code = e.target.pincode.value;
+        const student = {first_name, middle_name, last_name, full_name, class_number, division, roll, address1, address2, landmark, city, pin_code};
+        fetch('http://localhost:5000/students', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(student)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success(`${full_name} added successfully`);
+                e.target.reset()
+            })
+    }
 
     return (
         <div className='ml-4'>
+            <DashboardButton></DashboardButton>
             <section className='flex justify-between mr-12'>
                 <p className='font-bold'>Add Student</p>
                 <p>{date} {time}</p>
             </section>
 
             <section className='mt-6'>
-                <form action="">
+                <form onSubmit={handleAddStudent}>
                     <div className='mb-5'>
                         <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="text" name='first' placeholder='First Name' required />
                         <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="text" name='middle' placeholder='Middle Name' required />
@@ -46,7 +80,7 @@ const AddStudent = () => {
                             <option value="E">E</option>
                         </select>
 
-                        <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="number" name="roll" placeholder='Enter Roll Number in Digits' required />
+                        <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="text" name="roll" placeholder='Enter Roll Number in Digits' maxLength="2" required />
                     </div>
 
                     <div className='mb-5'>
@@ -58,7 +92,7 @@ const AddStudent = () => {
                     <div className='mb-8'>
                         <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="text" name='landmark' placeholder='Landmark' required />
                         <input style={{ "width": "31%" }} className='h-10 border rounded mr-4 pl-4' type="text" name='city' placeholder='City' required />
-                        <input style={{ "width": "31%" }} className='h-10 border rounded pl-4' type="text" name='pincode' placeholder='Pincode' required />
+                        <input style={{ "width": "31%" }} className='h-10 border rounded pl-4' type="text" name='pincode' placeholder='Pincode' maxLength="6" required />
                     </div>
 
                     <div>
