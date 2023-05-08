@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Loading';
 
 const View = () => {
-    const { data: specificStudent, isLoading: specificStudentLoading } = useQuery('specificStudent', () => fetch(`http://localhost:5000/student?pincode=${pincode}`).then(res => res.json()));
+    const { data: specificStudent, isLoading: specificStudentLoading } = useQuery('specificStudent', () => fetch(`https://school-entry-server.onrender.com/student?pincode=${pincode}`).then(res => res.json()));
     console.log(specificStudent)
 
     const { pincode } = useParams();

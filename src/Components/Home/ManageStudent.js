@@ -8,7 +8,7 @@ import DashboardButton from './DashboardButton';
 
 const ManageStudent = () => {
     const [date, time] = useDate();
-    const { data: students, isLoading: studentLoading, refetch } = useQuery('allstudent', () => fetch('http://localhost:5000/students').then(res => res.json()));
+    const { data: students, isLoading: studentLoading, refetch } = useQuery('allstudent', () => fetch('https://school-entry-server.onrender.com/students').then(res => res.json()));
 
     if (studentLoading) {
         return <Loading></Loading>

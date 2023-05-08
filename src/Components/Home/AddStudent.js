@@ -24,7 +24,7 @@ const AddStudent = () => {
         const city = e.target.city.value;
         const pin_code = e.target.pincode.value;
         const student = {first_name, middle_name, last_name, full_name, class_number, division, roll, address1, address2, landmark, city, pin_code};
-        fetch('http://localhost:5000/students', {
+        fetch('https://school-entry-server.onrender.com/students', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

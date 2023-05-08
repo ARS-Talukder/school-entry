@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Loading from '../Loading';
 
 const Edit = () => {
-    const { data: specificStudent, isLoading: specificStudentLoading } = useQuery('specificStudent', () => fetch(`http://localhost:5000/student?pincode=${pincode}`).then(res => res.json()));
+    const { data: specificStudent, isLoading: specificStudentLoading } = useQuery('specificStudent', () => fetch(`https://school-entry-server.onrender.com/student?pincode=${pincode}`).then(res => res.json()));
     const navigate = useNavigate();
 
     const { pincode } = useParams();
@@ -29,7 +29,7 @@ const Edit = () => {
         const student = { first_name, middle_name, last_name, full_name, class_number, division, roll, address1, address2, landmark, city };
         console.log(student)
 
-        fetch(`http://localhost:5000/student-update?pincode=${pincode}`, {
+        fetch(`https://school-entry-server.onrender.com/student-update?pincode=${pincode}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

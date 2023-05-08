@@ -10,7 +10,7 @@ const Student = ({ student, refetch }) => {
     const handleDelete = () => {
         const proceed = window.confirm('Are you sure you want to delete thus item?');
         if (proceed) {
-            fetch(`http://localhost:5000/student-delete?pincode=${pin_code}`, {
+            fetch(`https://school-entry-server.onrender.com/student-delete?pincode=${pin_code}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
